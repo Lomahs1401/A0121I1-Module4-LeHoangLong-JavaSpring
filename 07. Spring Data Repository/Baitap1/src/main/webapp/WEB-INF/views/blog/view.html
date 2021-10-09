@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Information Blog</title>
+</head>
+<body>
+<a href="/index">Back</a>
+<table th:object="${blog}" border="1">
+    <tr>
+
+        <td>ID</td>
+        <td><span name="id" th th:text="${blog.id}"></span>
+
+        </td>
+    </tr>
+    <tr>
+        <td>Tiltle</td>
+        <td><span name="name" th:text="${blog.title}" th:field="*{title}"></span></td>
+    </tr>
+    <tr>
+        <td>Context</td>
+        <td><span name="id" th:text="${blog.context}" th:field="*{context}"></span></td>
+    </tr>
+    <tr>
+        <td>Category</td>
+        <td><span name="id" th:text="${blog.category.nameCategory}" th:field="*{category}"></span></td>
+    </tr>
+
+</table>
+
+<input type="hidden" name="action" th:value="${action}"/>
+
+</body>
+</html><!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Information Blog</title>
+</head>
+<body>
+<a href="/index">Back</a>
+<table th:object="${blog}" border="1">
+    <tr>
+
+        <td>ID</td>
+        <td><span name="id" th th:text="${blog.id}"></span>
+
+        </td>
+    </tr>
+    <tr>
+        <td>Tiltle</td>
+        <td><span name="name" th:text="${blog.title}" th:field="*{title}"></span></td>
+    </tr>
+    <tr>
+        <td>Context</td>
+        <td><span name="id" th:text="${blog.context}" th:field="*{context}"></span></td>
+    </tr>
+    <tr>
+        <td>Category</td>
+        <td><span name="id" th:text="${blog.category.nameCategory}" th:field="*{category}"></span></td>
+    </tr>
+
+</table>
+<input type="hidden" name="action" th:value="${action}"/>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>List Blogs</title>
+</head>
+<body>
+<a href="/create">Create new blog</a><br>
+<a href="/category">Manager Category</a><br>
+<form action="">
+  <input type="text" placeholder="find of title" name="search"/>
+  <input type="submit" value="Tìm kiếm">
+</form>
+<form action="">
+  <select onchange="this.form.submit()" name="cate">
+    <option  value="" disabled selected>Chọn</option>
+    <th:block th:each="category:${categories}" >
+      <option th:value="${category.id}" th:text="${category.nameCategory}" ></option>
+    </th:block>
+  </select>
+</form>
+<table border="1">
+  <tr>
+    <th>id</th>
+    <th>title</th>
+    <th>Context</th>
+    <th>Category</th>
+  </tr>
+  <tr th:each="blog:${blogs}">
+    <td th:text="${blog.id}"></td>
+    <td><a th:text="${blog.title}" th:href="@{/view/{id}(id=${blog.id})}"></a></td>
+    <td th:text="${blog.context}"></td>
+    <td th:text="${blog.category.nameCategory}"></td>
+    <td><a th:href="@{/edit/{id}(id=${blog.id})}">edit</a></td>
+    <td><a th:href="@{/delete/{id}(id=${blog.id})}">delete</a></td>
+  </tr>
+</table>
+<div>
+  <a th:href="@{'/index'(page=${blogs.number - 1})}" th:if="${blogs.hasPrevious()}">Previous</a>
+  <span th:text="${blogs.number + 1}"></span>/<span th:text="${blogs.totalPages}"></span>
+  <a th:href="@{'/index'(page=${blogs.number + 1})}" th:if="${blogs.hasNext()}">Next</a>
+</div>
+</body>
+</html>
