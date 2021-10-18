@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Return book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<form method="post">
+
+    <table class="table table-striped">
+
+        <tbody>
+        <tr>
+            <td scope="row">ID</td>
+            <td th:text="${book.id}" name="book">
+            </td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td th:text="${book.name}"></td>
+        </tr>
+        <tr>
+            <td>Quantity</td>
+            <td th:text="${book.quantity}"></td>
+        </tr>
+        <tr>
+            <td>
+              Enter code
+            </td>
+            <td>  <input name="code" type="text"></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <button class="btn btn-success" type="submit">Return Book</button>
+</form>
+</body>
+</html>

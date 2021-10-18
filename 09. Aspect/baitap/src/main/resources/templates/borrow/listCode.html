@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>List Code</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <a class="btn btn-success" th:href="@{/list}">Back here</a>
+    <table class="table table-striped" style="text-align: center;">
+        <thead>
+            <tr>
+                <th>Code Book</th>
+                <th>Name Book</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="code : ${borrows}">
+                <td th:text="${code.codeOfBook}"></td>
+                <td th:text="${code.book.getName()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
