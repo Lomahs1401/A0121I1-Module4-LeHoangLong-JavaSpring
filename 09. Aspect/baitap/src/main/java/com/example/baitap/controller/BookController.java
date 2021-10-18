@@ -42,26 +42,26 @@ public class BookController {
         return "borrow/listCode";
     }
 
-    @GetMapping("/borrow/{id}")
-    public String getIdBook(@PathVariable(name = "id") int id, Model model) {
-        String random = RandomString.randomAlphaNumeric(RANDOM_LENGTH);
+    @GetMapping("borrow/{id}")
+    public String getIdBook(Model model, @PathVariable(name = "id") int id) {
+        model.addAttribute("book", bookRepository.findById(id).get());
+        String random = RandomString.randomAlphaNumeric(5);
+        model.addAttribute("wordRandom", random);
         Borrow borrow = new Borrow();
         borrow.setCodeOfBook(random);
         borrow.setBook(bookRepository.findById(id).get());
-        model.addAttribute("book", bookRepository.findById(id).get());
-        model.addAttribute("wordRandom", random);
         model.addAttribute("borrow", borrow);
         return "book/borrow";
     }
 
     @PostMapping(value="/borrow/{id}")
-    public String getIdBorrow(@PathVariable(name = "id") int id, Model model, @ModelAttribute("borrow") Borrow borrow) throws InvalidCode {
+    public String getIdBorrow(@PathVariable(name = "id") int id, @ModelAttribute("borrow") Borrow borrow, Model model) throws InvalidQuantity {
         borrowRepository.save(borrow);
         Book book = bookRepository.findById(id).get();
         book.setQuantity(book.getQuantity() - 1);
-        boolean check = book.getQuantity() > 0 ? true : false;
-        if (check) {
-            throw new InvalidCode();
+        boolean check = (book.getQuantity() >= 0) ? true : false;
+        if (!check) {
+            throw new InvalidQuantity();
         }
         bookRepository.save(book);
         return "redirect:/list";

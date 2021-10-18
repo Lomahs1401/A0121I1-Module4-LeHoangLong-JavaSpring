@@ -20,9 +20,9 @@ public class RandomString {
     /**
      * Random string with a-zA-Z0-9, not included special characters
      */
-    public static String randomAlphaNumeric(int numberOfCharactor) {
+    public static String randomAlphaNumeric(int numberOfCharacter) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < numberOfCharactor; i++) {
+        for (int i = 0; i < numberOfCharacter; i++) {
             int number = randomNumber(0, ALPHA_NUMERIC.length() - 1);
             char ch = ALPHA_NUMERIC.charAt(number);
             sb.append(ch);
