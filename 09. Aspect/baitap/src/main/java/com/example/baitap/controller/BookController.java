@@ -45,7 +45,7 @@ public class BookController {
     @GetMapping("borrow/{id}")
     public String getIdBook(Model model, @PathVariable(name = "id") int id) {
         model.addAttribute("book", bookRepository.findById(id).get());
-        String random = RandomString.randomAlphaNumeric(5);
+        String random = RandomString.randomAlphaNumeric(RANDOM_LENGTH);
         model.addAttribute("wordRandom", random);
         Borrow borrow = new Borrow();
         borrow.setCodeOfBook(random);
