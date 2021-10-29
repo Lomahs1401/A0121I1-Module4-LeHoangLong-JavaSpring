@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Blogs</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script scr="manager_book_ajax\src\main\resources\static\main.js"></script>
+</head>
+
+<body id="main">
+
+    <input type="text" id="search"><br>
+    <button onclick="search();" th:value="Search">Search here</button>
+
+    <table class="table table-striped table-bordered" id="tableMain">
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>Author</th>
+            <th>Category</th>
+        </tr>
+        <tr id="row" th:each="blog : ${blogs}">
+            <td class="count" th:text="${blog.id}"></td>
+            <td th:text="${blog.type}"></td>
+            <td th:text="${blog.author}"></td>
+            <td th:text="${blog.category.getName()}"></td>
+        </tr>
+    </table>
+    <button onclick="loadMore()">Load More</button>
+</body>
+</html>
